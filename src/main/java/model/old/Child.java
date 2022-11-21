@@ -3,10 +3,10 @@
  * and open the template in the editor.
  */
 
-package model;
+package model.old;
 
 
-import goodies.BooleanConverter;
+import goodies.BooleanToValidConverter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Convert;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
  *
  * @author LabHiber
  */
-// <joined-subclass extends="model.Person" lazy="false" name="model.Child" table="CHILDREN">
+// <joined-subclass extends="model.old.Person" lazy="false" name="model.old.Child" table="CHILDREN">
 @Entity
 //   <key foreign-key="FK_CHILD_PERSON">
 //      <column name="CHILD_ID"/>
@@ -27,7 +27,7 @@ import javax.persistence.Table;
 @Table(name="CHILDREN")
 public class Child extends Person implements Serializable{
 
-    @Convert(converter = BooleanConverter.class)
+    @Convert(converter = BooleanToValidConverter.class)
     private Boolean learning;
     
     public Child() {

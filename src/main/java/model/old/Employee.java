@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model;
+package model.old;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ import org.hibernate.annotations.Cascade;
  *
  * @author LabHiber
  */
-// <joined-subclass extends="model.Person" lazy="false" name="model.Employee" table="EMPLOYEES">
+// <joined-subclass extends="model.old.Person" lazy="false" name="model.old.Employee" table="EMPLOYEES">
 //<key foreign-key="FK_EMP_PER">
 //      <column name="EMP_ID"/>
 //    </key>
@@ -33,7 +33,7 @@ import org.hibernate.annotations.Cascade;
 @PrimaryKeyJoinColumn(name="EMP_ID",foreignKey = @javax.persistence.ForeignKey(name="FK_EMP_PER"))
 @Table(name="EMPLOYEES")
 public class Employee extends Person implements Serializable{
-// <many-to-one cascade="save-update" class="model.Address"
+// <many-to-one cascade="save-update" class="model.old.Address"
 // column="ADR_ID" foreign-key="FK_EMP_ADR"
 //   name="address" unique="false"/>
  @ManyToOne
@@ -54,7 +54,7 @@ public class Employee extends Person implements Serializable{
 //      <key foreign-key="FK_EMP_CHILDREN">
 //        <column name="EMP_ID"/>
 //      </key>
-//      <one-to-many class="model.Child"/>
+//      <one-to-many class="model.old.Child"/>
 //    </set>
  @OneToMany
  @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -65,7 +65,7 @@ public class Employee extends Person implements Serializable{
 //      <key foreign-key="FK_PROJ_EMP">
 //        <column name="EMP_ID"/>
 //      </key>
-//      <many-to-many class="model.Project" column="PROJ_ID"/>
+//      <many-to-many class="model.old.Project" column="PROJ_ID"/>
 //    </set>
  @ManyToMany
  @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)

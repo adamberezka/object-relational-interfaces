@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model;
+package model.old;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -40,12 +40,12 @@ public class Department implements Serializable{
 //      <key >
 //        <column name="DEPT_ID"/>
 //      </key>
-//      <one-to-many class="model.Employee"/>
+//      <one-to-many class="model.old.Employee"/>
 //    </set>
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees = new HashSet<>(10);
     
-//   <many-to-one class="model.Manager" column="MAN_ID" 
+//   <many-to-one class="model.old.Manager" column="MAN_ID"
 //    foreign-key="FK_DEPT_MAN" name="manager" unique="true"/>
   
     @OneToOne

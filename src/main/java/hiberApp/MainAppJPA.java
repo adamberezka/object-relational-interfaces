@@ -1,23 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hiberApp;
 
-import util.EMBuilder;
-import java.util.List;
+import model.old.Employee;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import model.Employee;
+import java.util.List;
 
 
-/* 
- @author LabHiber
- */
 public final class MainAppJPA {
 
     private final static EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("labPU");
@@ -29,9 +19,9 @@ public final class MainAppJPA {
 
     public static void testJPQL() {
         EntityManager em = FACTORY.createEntityManager();
-            List<Employee> result = em.createQuery("select e from Employee e").getResultList();
-            result.forEach(System.out::println);
-            System.out.println("=======================");
+        List<Employee> result = em.createQuery("select e from Employee e").getResultList();
+        result.forEach(System.out::println);
+        System.out.println("=======================");
         em.close();
     }
 

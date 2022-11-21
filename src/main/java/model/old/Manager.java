@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model;
+package model.old;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
  *
  * @author LabHiber
  */
-//<joined-subclass extends="model.Employee" lazy="false" name="model.Manager" table="MANAGERS">
+//<joined-subclass extends="model.old.Employee" lazy="false" name="model.old.Manager" table="MANAGERS">
 //    <key foreign-key="FK_MAN_EMP">
 //      <column name="MAN_ID"/>
 //    </key>

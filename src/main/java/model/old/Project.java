@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.old;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
  *
  * @author LabHiber
  */
-//<class name="model.Project" table="PROJECTS">
+//<class name="model.old.Project" table="PROJECTS">
 @Entity
 @Table(name="PROJECTS")
 public class Project implements Serializable {
@@ -43,7 +43,7 @@ public class Project implements Serializable {
 //      <key foreign-key="FK_EMP_PROJ">
 //        <column name="PROJ_ID"/>
 //      </key>
-//      <many-to-many class="model.Employee" column="EMP_ID"/>
+//      <many-to-many class="model.old.Employee" column="EMP_ID"/>
 //    </set>
     @ManyToMany(mappedBy="projects")
 //    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)

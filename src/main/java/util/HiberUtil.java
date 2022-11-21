@@ -5,9 +5,9 @@
  */
 package util;
 
-import model.*;
 import java.io.File;
 
+import model.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -74,13 +74,13 @@ public final class HiberUtil {
             Configuration config = new Configuration().configure();
           //  config.setProperty("hibernate.show_sql", "true");
                       
-            config.addAnnotatedClass(Address.class)
-            .addAnnotatedClass(Department.class)
-            .addAnnotatedClass(Child.class)
-            .addAnnotatedClass(Manager.class)
-            .addAnnotatedClass(Person.class)
-            .addAnnotatedClass(Employee.class)
-            .addAnnotatedClass(Project.class);
+            config.addAnnotatedClass(Person.class)
+                    .addAnnotatedClass(Address.class)
+                    .addAnnotatedClass(Course.class)
+                    .addAnnotatedClass(Flight.class)
+                    .addAnnotatedClass(FlightInstructor.class)
+                    .addAnnotatedClass(Student.class)
+                    .addAnnotatedClass(TheoryClass.class);
             SessionFactory sf = config.buildSessionFactory();
            
             return (sf);
