@@ -9,7 +9,7 @@ import javax.persistence.Tuple;
 import java.util.List;
 
 
-public final class MainApp {
+public final class MainAppJPQL {
 
     private static final SessionFactory SESSION_FACTORY = HiberUtil.getSessionFactory(HiberUtil.Mapping.ANN);
 
@@ -17,7 +17,7 @@ public final class MainApp {
         
         final DataLoad dataLoad = new DataLoad();
         dataLoad.createData(SESSION_FACTORY);
-        final DataQueries dataQueries = new DataQueries();
+        final DataQueriesJPQL dataQueries = new DataQueriesJPQL();
 
         final String country = "Poland";
         System.out.println();

@@ -10,7 +10,7 @@ import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public final class DataQueries {
+public final class DataQueriesJPQL {
 
     public List<Tuple> getAddressesCityAndStreetWithCountryEquals(SessionFactory SESSION_FACTORY, String country) {
         try (Session session = SESSION_FACTORY.openSession()) {
@@ -27,9 +27,8 @@ public final class DataQueries {
     public List<Student> getStudentsWithUnpassedTheoryClasses(SessionFactory SESSION_FACTORY) {
         try (Session session = SESSION_FACTORY.openSession()) {
             Query query = session.createQuery("" +
-                    "select s from Student s where s.id in " +
-                    "   (select ss.id from Student ss join ss.theoryClasses tc " +
-                    "   where tc.grade = 2)", Student.class);
+                    "select distinct tc.student from TheoryClass tc " +
+                    "where tc.grade = 2", Student.class);
             return query.list();
         } catch (Exception e) {
             throw new RuntimeException();
