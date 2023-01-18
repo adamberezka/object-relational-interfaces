@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Tuple;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -34,7 +35,9 @@ public class DataQueriesCriteriaAPI {
 
         final CriteriaQuery<Student> query = criteriaBuilder.createQuery(Student.class);
         final Root<TheoryClass> root = query.from(TheoryClass.class);
-        query.select(root.get("student"))
+        final Join<TheoryClass, Student> student = root.join("student");
+
+        query.select(student)
                 .where(criteriaBuilder.equal(root.get("grade"), 2))
                 .distinct(true);
 

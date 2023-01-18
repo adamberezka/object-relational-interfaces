@@ -27,7 +27,7 @@ public final class DataQueriesJPQL {
     public List<Student> getStudentsWithUnpassedTheoryClasses(SessionFactory SESSION_FACTORY) {
         try (Session session = SESSION_FACTORY.openSession()) {
             Query query = session.createQuery("" +
-                    "select distinct tc.student from TheoryClass tc " +
+                    "select distinct s from TheoryClass tc INNER JOIN tc.student s " +
                     "where tc.grade = 2", Student.class);
             return query.list();
         } catch (Exception e) {
