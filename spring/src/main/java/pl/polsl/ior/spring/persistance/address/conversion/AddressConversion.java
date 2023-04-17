@@ -13,7 +13,6 @@ public abstract class AddressConversion {
         addressEntity.setCity(address.city());
         addressEntity.setPostalCode(address.postalCode());
         addressEntity.setStreet(address.street());
-        addressEntity.setPerson(PersonConversion.toEntity(address.person()));
         return addressEntity;
     }
 
@@ -23,8 +22,7 @@ public abstract class AddressConversion {
                 addressEntity.getCountry(),
                 addressEntity.getCity(),
                 addressEntity.getPostalCode(),
-                addressEntity.getStreet(),
-                PersonConversion.toDomain(addressEntity.getPerson())
+                addressEntity.getStreet()
         );
     }
 }

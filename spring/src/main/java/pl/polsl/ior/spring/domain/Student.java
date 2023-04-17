@@ -5,11 +5,10 @@ import lombok.Value;
 import java.util.Set;
 
 @Value
-public class Student extends Person {
-    String medicalTests;
-    Set<Flight> flights;
-    Set<TheoryClass> theoryClasses;
-    Set<Course> courses;
+public final class Student extends Person {
+    private final String medicalTests;
+    private final Set<Flight> flights;
+    private final Set<TheoryClass> theoryClasses;
 
     public Student(Long id,
                    String fName,
@@ -18,12 +17,35 @@ public class Student extends Person {
                    Address address,
                    String medicalTests,
                    Set<Flight> flights,
-                   Set<TheoryClass> theoryClasses,
-                   Set<Course> courses) {
+                   Set<TheoryClass> theoryClasses) {
         super(id, fName, sName, SSN, address);
         this.medicalTests = medicalTests;
         this.flights = flights;
         this.theoryClasses = theoryClasses;
-        this.courses = courses;
+    }
+
+    public Student withFlights(Set<Flight> flights) {
+        return this.flights == flights ? this : new Student(
+                this.getId(),
+                this.getFName(),
+                this.getSName(),
+                this.getSSN(),
+                this.getAddress(),
+                this.medicalTests,
+                flights,
+                this.theoryClasses);
+    }
+
+    public Student withTheoryClasses(Set<TheoryClass> theoryClasses) {
+        return this.theoryClasses == theoryClasses ? this : new Student(
+                this.getId(),
+                this.getFName(),
+                this.getSName(),
+                this.getSSN(),
+                this.getAddress(),
+                this.medicalTests,
+                this.flights,
+                theoryClasses
+        );
     }
 }

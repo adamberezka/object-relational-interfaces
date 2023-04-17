@@ -9,7 +9,6 @@ public class ApiStudent extends ApiPerson {
     String medicalTests;
     Set<ApiFlight> flights;
     Set<ApiTheoryClass> theoryClasses;
-    Set<ApiCourse> courses;
 
     public ApiStudent(Long id,
                       String fName,
@@ -18,12 +17,10 @@ public class ApiStudent extends ApiPerson {
                       ApiAddress address,
                       String medicalTests,
                       Set<ApiFlight> flights,
-                      Set<ApiTheoryClass> theoryClasses,
-                      Set<ApiCourse> courses) {
+                      Set<ApiTheoryClass> theoryClasses) {
         super(id, fName, sName, SSN, address);
         this.medicalTests = medicalTests;
         this.flights = flights;
         this.theoryClasses = theoryClasses;
-        this.courses = courses;
     }
 }

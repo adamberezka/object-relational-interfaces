@@ -22,6 +22,7 @@ public class FlightEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime date;
     private int hours;
     private String description;
@@ -34,10 +35,4 @@ public class FlightEntity implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="STUDENT_ID", foreignKey = @ForeignKey(name="FK_FLIGHT_STUDENT"))
     private StudentEntity student;
-
-    public FlightEntity(OffsetDateTime date, int hours, String description) {
-        this.date = date;
-        this.hours = hours;
-        this.description = description;
-    }
 }

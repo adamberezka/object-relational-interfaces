@@ -22,7 +22,4 @@ public class FlightInstructorEntity extends PersonEntity implements Serializable
     private long licenceNo;
     @Convert(converter = BooleanToValidConverter.class)
     private boolean valid;
-
-    @OneToMany(mappedBy = "flightInstructor")
-    private Set<FlightEntity> flights = new HashSet<>();
 }

@@ -26,6 +26,11 @@ public class CourseEntity implements Serializable {
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
     private String description;
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Course_Student",
+            joinColumns = { @JoinColumn(name = "course_id") },
+            inverseJoinColumns = { @JoinColumn(name = "student_id") }
+    )
     private Set<StudentEntity> students = new HashSet<>();
 }

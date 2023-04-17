@@ -5,8 +5,7 @@ public record Address(
         String country,
         String city,
         String postalCode,
-        String street,
-        Person person
+        String street
 ) {
 
 }

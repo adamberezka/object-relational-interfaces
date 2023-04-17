@@ -9,5 +9,4 @@ public class ApiAddress {
         String city;
         String postalCode;
         String street;
-        ApiPerson person;
 }

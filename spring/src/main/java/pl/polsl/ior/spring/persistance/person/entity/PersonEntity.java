@@ -17,11 +17,11 @@ public class PersonEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String fName;
-    private String sName;
+    private String firstname;
+    private String surname;
     private String SSN;
     @OneToOne
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name="ADDRESS_ID", foreignKey = @ForeignKey(name="FK_PERSON_ADDRESS"))
     private AddressEntity address;
 }

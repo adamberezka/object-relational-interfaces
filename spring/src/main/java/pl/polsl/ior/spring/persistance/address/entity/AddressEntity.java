@@ -14,7 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(exclude = "person")
 public class AddressEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +22,4 @@ public class AddressEntity implements Serializable {
     private String city;
     private String postalCode;
     private String street;
-    @OneToOne(mappedBy = "address")
-    private PersonEntity person;
 }
