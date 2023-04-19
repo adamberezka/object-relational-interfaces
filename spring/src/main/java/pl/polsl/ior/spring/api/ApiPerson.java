@@ -1,14 +1,17 @@
 package pl.polsl.ior.spring.api;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApiPerson {
-    private final Long id;
-    private final String fName;
-    private final String sName;
-    private final String SSN;
-    private final ApiAddress address;
+    private Long id;
+    private String fName;
+    private String sName;
+    private String SSN;
+    private ApiAddress address;
 }

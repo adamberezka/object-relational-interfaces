@@ -13,5 +13,6 @@ public abstract class Api {
 
     public static class Student {
         public static final String ENDPOINT = API_BASE + "/students";
+
     }
 }

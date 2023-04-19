@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.Cascade;
-import pl.polsl.ior.spring.persistance.theoryclass.entity.TheoryClassEntity;
 import pl.polsl.ior.spring.persistance.course.entity.CourseEntity;
+import pl.polsl.ior.spring.persistance.theoryclass.entity.TheoryClassEntity;
 import pl.polsl.ior.spring.persistance.flight.entity.FlightEntity;
 import pl.polsl.ior.spring.persistance.person.entity.PersonEntity;
 
@@ -23,8 +23,11 @@ import java.util.Set;
 @ToString
 public class StudentEntity extends PersonEntity implements Serializable {
     private String medicalTests;
-    @OneToMany(mappedBy = "student")
+    @OneToMany
+    @JoinColumn(name = "STUDENT_ID", foreignKey = @ForeignKey(name = "FK_STUDENT_FLIGHT"))
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
     private Set<FlightEntity> flights = new HashSet<>();
     @OneToMany(mappedBy = "student")
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
     private Set<TheoryClassEntity> theoryClasses = new HashSet<>();
 }

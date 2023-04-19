@@ -20,13 +20,4 @@ import pl.polsl.ior.spring.service.CourseService;
 public class CourseController {
 
     private final CourseService courseService;
-
-    @PostMapping
-    public ResponseEntity<CreateCourseResponse> createCourse(@RequestBody CreateCourseRequest request) {
-        final ApiCourse apiCourse = request.getCourse();
-        final Course course = CourseApiConversion.toDomain(apiCourse);
-        final Course savedCourse = courseService.createCourse(course);
-        final ApiCourse savedApiCourse = CourseApiConversion.toApi(savedCourse);
-        return ResponseEntity.ok(new CreateCourseResponse(savedApiCourse));
-    }
 }

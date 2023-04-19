@@ -1,9 +1,13 @@
 package pl.polsl.ior.spring.persistance.student.conversion;
 
-import pl.polsl.ior.spring.domain.*;
+import jakarta.persistence.AttributeConverter;
+import lombok.RequiredArgsConstructor;
+import pl.polsl.ior.spring.domain.Flight;
+import pl.polsl.ior.spring.domain.Student;
+import pl.polsl.ior.spring.domain.TheoryClass;
 import pl.polsl.ior.spring.persistance.address.conversion.AddressConversion;
 import pl.polsl.ior.spring.persistance.flight.conversion.FlightConversion;
-import pl.polsl.ior.spring.persistance.flightinstructor.entity.FlightInstructorEntity;
+import pl.polsl.ior.spring.persistance.flight.conversion.OffsetDateTimeConverter;
 import pl.polsl.ior.spring.persistance.student.entity.StudentEntity;
 import pl.polsl.ior.spring.persistance.theoryclass.conversion.TheoryClassConversion;
 
@@ -51,38 +55,23 @@ public abstract class StudentConversion {
                 studentEntity.getTheoryClasses()
                         .stream()
                         .map(theoryClassEntity ->
-                            new TheoryClass(
-                                    theoryClassEntity.getId(),
-                                    theoryClassEntity.getName(),
-                                    theoryClassEntity.getHours(),
-                                    theoryClassEntity.getGrade(),
-                                    student
-                            )
+                                new TheoryClass(
+                                        theoryClassEntity.getId(),
+                                        theoryClassEntity.getName(),
+                                        theoryClassEntity.getHours(),
+                                        theoryClassEntity.getGrade(),
+                                        student
+                                )
                         ).collect(Collectors.toSet())
         ).withFlights(
                 studentEntity.getFlights()
                         .stream()
-                        .map(flightEntity -> {
-                                    final Flight flight = new Flight(
-                                            flightEntity.getId(),
-                                            flightEntity.getDate(),
-                                            flightEntity.getHours(),
-                                            flightEntity.getDescription(),
-                                            null,
-                                            student
-                                    );
-                                    final FlightInstructorEntity flightInstructorEntity = flightEntity.getFlightInstructor();
-                                    final FlightInstructor flightInstructor = new FlightInstructor(
-                                            flightInstructorEntity.getId(),
-                                            flightInstructorEntity.getFirstname(),
-                                            flightInstructorEntity.getSurname(),
-                                            flightInstructorEntity.getSSN(),
-                                            AddressConversion.toDomain(flightInstructorEntity.getAddress()),
-                                            flightInstructorEntity.getLicenceNo(),
-                                            flightInstructorEntity.isValid()
-                                    );
-                                    return flight.withFlightInstructor(flightInstructor);
-                                }
+                        .map(flightEntity -> new Flight(
+                                        flightEntity.getId(),
+                                        OffsetDateTimeConverter.toOffsetDateTime(flightEntity.getDate()),
+                                        flightEntity.getHours(),
+                                        flightEntity.getDescription()
+                                )
                         )
                         .collect(Collectors.toSet())
         );

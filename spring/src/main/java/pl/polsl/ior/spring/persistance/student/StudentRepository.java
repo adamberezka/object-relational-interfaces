@@ -16,9 +16,13 @@ public interface StudentRepository {
 
     List<Student> findByFNameLike(String fName);
 
-    Optional<Student> findDistinctByFName(String fName);
+    List<Student> findDistinctByFName(String fName);
 
     List<Student> findByFNameOrSName(String fName, String sName);
 
+    List<Student> findWithMedicalTestsContainingIgnoreCase(String medicalTestsContain);
+
     List<Student> findWithFlightsBetween(OffsetDateTime from, OffsetDateTime to);
+
+    Optional<Student> deleteById(Long id);
 }

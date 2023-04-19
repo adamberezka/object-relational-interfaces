@@ -12,6 +12,4 @@ public class Flight {
     OffsetDateTime date;
     int hours;
     String description;
-    FlightInstructor flightInstructor;
-    Student student;
 }

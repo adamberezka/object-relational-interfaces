@@ -1,10 +1,15 @@
 package pl.polsl.ior.spring.api;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.util.Set;
 
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApiStudent extends ApiPerson {
     String medicalTests;
     Set<ApiFlight> flights;

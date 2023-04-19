@@ -22,4 +22,7 @@ public class FlightInstructorEntity extends PersonEntity implements Serializable
     private long licenceNo;
     @Convert(converter = BooleanToValidConverter.class)
     private boolean valid;
+    @OneToMany
+    @JoinColumn(name = "FLIGHT_INSTRUCTOR_ID", foreignKey = @ForeignKey(name = "FK_FLIGHT_INSTRUCTOR_FLIGHT"))
+    private Set<FlightEntity> flights;
 }

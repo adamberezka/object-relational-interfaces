@@ -8,6 +8,7 @@ import java.util.Set;
 public class FlightInstructor extends Person {
     long licenceNo;
     boolean valid;
+    Set<Flight> flights;
 
     public FlightInstructor(Long id,
                             String fName,
@@ -15,9 +16,10 @@ public class FlightInstructor extends Person {
                             String SSN,
                             Address address,
                             long licenceNo,
-                            boolean valid) {
+                            boolean valid, Set<Flight> flights) {
         super(id, fName, sName, SSN, address);
         this.licenceNo = licenceNo;
         this.valid = valid;
+        this.flights = flights;
     }
 }
