@@ -2,6 +2,7 @@ package pl.polsl.ior.spring.student;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import okhttp3.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class StudentQueryApiTest {
+public class StudentApiTest extends ApiTestBase {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private final OkHttpClient httpClient = new OkHttpClient();
     private final HttpUrl urlBase = HttpUrl.parse("http://localhost:8080" + Api.Student.ENDPOINT);
 
     @Test
@@ -246,7 +245,7 @@ public class StudentQueryApiTest {
 
         final List<ApiStudent> students = objectMapper.readValue(responseBody.string(), new TypeReference<>() {});
 
-        assertEquals(2, students.size());
+        assertEquals(3, students.size());
         assertTrue(students.stream().anyMatch(apiStudent -> apiStudent.getId().equals(1L)));
         assertTrue(students.stream().anyMatch(apiStudent -> apiStudent.getId().equals(3L)));
     }

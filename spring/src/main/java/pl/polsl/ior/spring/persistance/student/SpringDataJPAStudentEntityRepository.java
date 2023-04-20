@@ -103,8 +103,7 @@ public class SpringDataJPAStudentEntityRepository implements StudentRepository {
             coursesWithStudentToDelete.forEach(courseEntity -> courseEntity.getStudents().remove(entityToDelete));
             courseEntityDAO.saveAll(coursesWithStudentToDelete);
             studentEntityDAO.delete(entityToDelete);
-            return Optional.of(StudentConversion.toDomain(entityToDelete));
         }
-        return Optional.empty();
+        return optionalEntityToDelete.map(StudentConversion::toDomain);
     }
 }

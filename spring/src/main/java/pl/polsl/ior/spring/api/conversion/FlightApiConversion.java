@@ -1,10 +1,7 @@
 package pl.polsl.ior.spring.api.conversion;
 
 import pl.polsl.ior.spring.api.ApiFlight;
-import pl.polsl.ior.spring.api.ApiFlightInstructor;
 import pl.polsl.ior.spring.domain.Flight;
-
-import java.util.Set;
 
 public abstract class FlightApiConversion {
 
@@ -13,9 +10,7 @@ public abstract class FlightApiConversion {
                 flight.getId(),
                 flight.getDate(),
                 flight.getHours(),
-                flight.getDescription(),
-                null,
-                null
+                flight.getDescription()
         );
     }
 }

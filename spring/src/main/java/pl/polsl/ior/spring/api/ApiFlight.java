@@ -10,6 +10,4 @@ public class ApiFlight {
     OffsetDateTime date;
     int hours;
     String description;
-    ApiFlightInstructor flightInstructor;
-    ApiStudent student;
 }

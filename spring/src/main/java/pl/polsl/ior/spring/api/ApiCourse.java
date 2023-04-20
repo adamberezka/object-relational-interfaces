@@ -12,4 +12,5 @@ public class ApiCourse {
     OffsetDateTime startDate;
     OffsetDateTime endDate;
     String description;
+    Set<ApiStudent> students;
 }

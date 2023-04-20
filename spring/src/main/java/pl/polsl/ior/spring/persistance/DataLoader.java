@@ -17,7 +17,6 @@ import pl.polsl.ior.spring.persistance.theoryclass.SpringDataJPATheoryClassEntit
 import pl.polsl.ior.spring.persistance.theoryclass.entity.TheoryClassEntity;
 
 import java.sql.Date;
-import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -37,15 +36,17 @@ public class DataLoader {
     @Transactional
     public void loadInitialData() {
 
-        final FlightEntity flight1 = createFlight(2, "desc");
+        final FlightEntity flight1 = createFlight(2, "desc BARREL roll");
         final FlightEntity flight2 = createFlight(3, "descflight2",
                 OffsetDateTime.of(2022, 12, 8, 12, 12, 12, 0, ZoneOffset.UTC));
-        final FlightEntity flight3 = createFlight(12, "descedesc");
+        final FlightEntity flight3 = createFlight(2, "descedesc",
+                OffsetDateTime.of(2022, 12, 18, 12, 12, 12, 0, ZoneOffset.UTC));
         final FlightEntity flight4 = createFlight(1, "cztery");
-        final FlightEntity flight5 = createFlight(13, "Flight number 5");
+        final FlightEntity flight5 = createFlight(2, "Flight Barrel number 5",
+                OffsetDateTime.of(2022, 11, 12, 12, 12, 12, 0, ZoneOffset.UTC));
         final FlightEntity flight6 = createFlight(12, "Flight number 6",
                 OffsetDateTime.of(2022, 11, 12, 12, 12, 12, 0, ZoneOffset.UTC));
-        final FlightEntity flight7 = createFlight(3, "Flight number 7",
+        final FlightEntity flight7 = createFlight(3, "Flight number baRRel 7",
                 OffsetDateTime.of(2022, 11, 8, 12, 12, 12, 0, ZoneOffset.UTC));
         flightEntityDAO.saveAll(List.of(flight1, flight2, flight3, flight4, flight5, flight6, flight7));
 
@@ -79,7 +80,7 @@ public class DataLoader {
         student3.setFlights(Set.of(flight5, flight6, flight7));
         studentEntityDAO.save(student3);
 
-        final StudentEntity student4  = new StudentEntity();
+        final StudentEntity student4 = new StudentEntity();
         student4.setMedicalTests("Skin test xdd 111");
         student4.setSSN("SSN4 1");
         student4.setFirstname("Michael");
@@ -89,7 +90,7 @@ public class DataLoader {
         student4.setFlights(Set.of());
         studentEntityDAO.save(student4);
 
-        final StudentEntity student5  = new StudentEntity();
+        final StudentEntity student5 = new StudentEntity();
         student5.setMedicalTests("Skin test xdd 222");
         student5.setSSN("SSN4 2");
         student5.setFirstname("Michael");
@@ -99,7 +100,7 @@ public class DataLoader {
         student5.setFlights(Set.of());
         studentEntityDAO.save(student5);
 
-        final StudentEntity student6  = new StudentEntity();
+        final StudentEntity student6 = new StudentEntity();
         student6.setMedicalTests("Skin test xdd 333");
         student6.setSSN("SSN4 3");
         student6.setFirstname("Michael");
@@ -109,7 +110,7 @@ public class DataLoader {
         student6.setFlights(Set.of());
         studentEntityDAO.save(student6);
 
-        final StudentEntity student7  = new StudentEntity();
+        final StudentEntity student7 = new StudentEntity();
         student7.setMedicalTests("Skin test xdd 444");
         student7.setSSN("SSN4 4");
         student7.setFirstname("Michael");
@@ -119,7 +120,7 @@ public class DataLoader {
         student7.setFlights(Set.of());
         studentEntityDAO.save(student7);
 
-        final StudentEntity student8  = new StudentEntity();
+        final StudentEntity student8 = new StudentEntity();
         student8.setMedicalTests("Skin test xdd 444");
         student8.setSSN("SSN4 4");
         student8.setFirstname("Jason");
@@ -178,21 +179,37 @@ public class DataLoader {
         flightInstructorEntityDAO.save(flightInstructor3);
 
 
-        final CourseEntity course1 = createCourse("Rookie", "Low level course . . .");
+        final CourseEntity course1 = createCourse("Basic", "Low Level course . . .",
+                OffsetDateTime.of(2022, 11, 8, 12, 0, 0, 0, ZoneOffset.UTC),
+                OffsetDateTime.of(2022, 12, 8, 12, 0, 0, 0, ZoneOffset.UTC));
         course1.setStudents(Set.of(student1));
         final CourseEntity course2 = createCourse("Professional", "High level course . . .");
-        course2.setStudents(Set.of(student2, student3));
-        final CourseEntity course3 = createCourse("Basic", "Basic level course . . .");
+        course2.setStudents(Set.of(student1, student2, student3));
+        final CourseEntity course3 = createCourse("Basic", "Basic LEVEL course . . .",
+                OffsetDateTime.of(2022, 10, 18, 12, 0, 0, 0, ZoneOffset.UTC),
+                OffsetDateTime.of(2022, 11, 18, 12, 0, 0, 0, ZoneOffset.UTC));
         course3.setStudents(Set.of(student1, student3));
-        final CourseEntity course4 = createCourse("Professional Plus", "Highest level course . . .");
+        final CourseEntity course4 = createCourse("Professional Plus", "Highest course . . .");
         course4.setStudents(Set.of(student2));
-        final CourseEntity course5 = createCourse("VeryBasic", "Lowest level course . . .");
-        course5.setStudents(Set.of(student3));
+        final CourseEntity course5 = createCourse("Basic", "Lowest  course . . .");
+        course5.setStudents(Set.of());
+        final CourseEntity course6 = createCourse("Rookie", "Lowest  course .1.");
+        course6.setStudents(Set.of());
+        final CourseEntity course7 = createCourse("Rookie", "Lowest  course .2 .");
+        course7.setStudents(Set.of());
+        final CourseEntity course8 = createCourse("Rookie", "Lowest  course . 3 .");
+        course8.setStudents(Set.of());
+        final CourseEntity course9 = createCourse("Rookie", "Lowest  course . 4 .");
+        course9.setStudents(Set.of());
         courseEntityDAO.save(course1);
         courseEntityDAO.save(course2);
         courseEntityDAO.save(course3);
         courseEntityDAO.save(course4);
         courseEntityDAO.save(course5);
+        courseEntityDAO.save(course6);
+        courseEntityDAO.save(course7);
+        courseEntityDAO.save(course8);
+        courseEntityDAO.save(course9);
     }
 
     private static FlightEntity createFlight(final int hours, final String description) {
@@ -204,9 +221,7 @@ public class DataLoader {
     }
 
     private static FlightEntity createFlight(final int hours, final String description, final OffsetDateTime date) {
-        final FlightEntity flight = new FlightEntity();
-        flight.setHours(hours);
-        flight.setDescription(description);
+        final FlightEntity flight = createFlight(hours, description);
         flight.setDate(OffsetDateTimeConverter.toDate(date));
         return flight;
     }
@@ -229,7 +244,14 @@ public class DataLoader {
         return course;
     }
 
-    private static AddressEntity createAddress(final String street, final String country, final String city, final String postalCode){
+    private static CourseEntity createCourse(final String type, final String description, final OffsetDateTime startDate, final OffsetDateTime endDate) {
+        final CourseEntity course = createCourse(type, description);
+        course.setStartDate(startDate);
+        course.setEndDate(endDate);
+        return course;
+    }
+
+    private static AddressEntity createAddress(final String street, final String country, final String city, final String postalCode) {
         final AddressEntity address = new AddressEntity();
         address.setStreet(street);
         address.setCountry(country);

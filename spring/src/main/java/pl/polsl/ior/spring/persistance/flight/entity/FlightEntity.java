@@ -4,14 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.annotations.Cascade;
-import pl.polsl.ior.spring.persistance.flightinstructor.entity.FlightInstructorEntity;
-import pl.polsl.ior.spring.persistance.student.entity.StudentEntity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.Instant;
 
 @Entity
 @Table(name = "FLIGHTS")

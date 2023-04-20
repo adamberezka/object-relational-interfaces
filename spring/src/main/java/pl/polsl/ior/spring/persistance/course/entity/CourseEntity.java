@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
 import pl.polsl.ior.spring.persistance.student.entity.StudentEntity;
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class CourseEntity implements Serializable {
     private OffsetDateTime endDate;
     private String description;
     @ManyToMany(cascade = { CascadeType.ALL })
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "Course_Student",
             joinColumns = { @JoinColumn(name = "course_id") },

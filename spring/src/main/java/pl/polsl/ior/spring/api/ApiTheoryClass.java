@@ -8,5 +8,4 @@ public class ApiTheoryClass {
     String name;
     int hours;
     int grade;
-    ApiStudent student;
 }
